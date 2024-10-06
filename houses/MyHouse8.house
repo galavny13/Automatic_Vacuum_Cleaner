@@ -1,0 +1,35 @@
+MyHouse8
+MaxSteps=10000
+MaxBattery=1000
+Rows=30
+Cols=50
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+WD         1   W     2     W    3      W    4    W
+W   5     6    W    7      W     8     W    9    W
+WWWWWWWW WWWWWWW WWWWWWWW  W WWWWWWWW  W WWWWWWW W
+W    1    W           2    3     4     5    6    W
+W    7    W     8          W     9     W    1    W
+W 2  3    W     4     W    5     6     W    7    W
+WWWWWWWW  W WWWWWWWW  W WWWWWWWW  WWWWWW WWWWWWW W
+W    8    W     9     W    1      2     3   4    W
+W    5    6     7     W    8      W     9   1    W
+W    2    W     3     4    5      W     6   7    W
+WWWWWWWW  WWWWWWWWW   W WWWWWWWW  W  WWWWWWWWWWW W
+W    8         9      W    1      W        2     W
+W    3    W    4      5    6      W        7     W
+W    8    W    9      W    1      2        3     W
+WWWWWWWW  W WWWWWWWW  W WWWWWWWW  WWWWWWW  WWWWW W
+W    4    W     5     W     6     W    7     8   W
+W    9    W     1     2     3     W    4     5   W
+W    6    7     8     W     9     W    1     2   W
+WWWWWWWW  WWWWWWWWW   WWWWWWWWW   W WWWWWWWWWWWW W
+W    3    W     4     W     5     W     6    7   W
+W    8    W     9     W     1     2     3    4   W
+W    5    6     7     W     8     W     9    1   W
+WWWWWWWW  W  WWWWWWW  W  WWWWWWW  W  WWWWWWWWWWW W
+W  2 3    W    4   5  W   6    7  W   8     9    W
+W  1 2    3    4   5  W   6    7  8   9     1    W
+W  2 3    W    4   5  6   7    8  W   9     1    W
+W  2 3    W    4   5  W   6    7  W   8     9    W
+W999999999999999999999999999999999999999999999999W
+WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
