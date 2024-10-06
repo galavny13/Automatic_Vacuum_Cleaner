@@ -1,0 +1,109 @@
+Bonus Features of the Vacuum Cleaner Simulation:
+
+NOTE - We know there is one problem with this bonus code. It prints out an unnecessary message when opening a new
+animation window, we didn't manage to disable it, so it can just be ignored (the message is
+"Setting vertical sync not supported").
+
+This document outlines the advanced features implemented in our vacuum cleaner simulation project,
+detailing both the functionality and the technical challenges overcome during development.
+
+1. Dynamic Visualization System:
+
+The simulation employs a dynamic visualization system that adapts in real-time to the dimensions and layout of the house being cleaned.
+This feature ensures that the entire cleaning area remains visible regardless of its size or complexity.
+
+Implementation Details:
+- Utilized SFML's View system for camera control.
+- Developed an algorithm to calculate the optimal cell size based on house dimensions and window size.
+- Implemented smooth transitions for panning and zooming using linear interpolation.
+- Overcame challenges in maintaining consistent scaling across different house layouts.
+
+Technical Challenges:
+- Ensuring smooth performance during rapid view changes.
+- Balancing between view detail and overall visibility.
+- Handling edge cases for extremely large or small house layouts.
+
+2. Interactive Control Suite:
+
+A comprehensive set of interactive controls was integrated to allow users fine-grained control over the simulation process.
+
+2.1 Step-by-Step Navigation:
+- Forward stepping (Can use button or right arrow on keyboard): Allows progression through individual cleaning steps.
+- Backward stepping (Can use button or left arrow on keyboard): Enables reversal of cleaning actions.
+
+Implementation Details:
+- Developed a state management system to track the algorithm's status at each step.
+- Implemented a reversal mechanism for each possible action (movement, cleaning, etc.).
+
+Technical Challenges:
+- Ensuring accurate reversal of complex state changes.
+
+2.2 Pause/Resume Functionality:
+- Allows users to halt and continue the simulation at will (Can use button or space key on keyboard).
+
+Implementation Details:
+- Integrated pause logic within the main simulation loop.
+- Ensured all animation and state updates respect the pause state.
+
+2.3 Variable Speed Control:
+- Enables users to adjust the simulation speed dynamically (might be subject to the speed of the computer, and in very
+large houses performance might be slow even at the highest speed level).
+
+Implementation Details:
+- Implemented a multi-level speed system with both automatic and manual controls.
+- Developed an adaptive speed adjustment algorithm based on the number of steps taken.
+- Created a user interface for manual speed control.
+
+Technical Challenges:
+- Balancing between smooth animation and rapid simulation progression.
+- Ensuring consistent behavior across different system performances.
+
+3. End-of-Simulation Options:
+
+Upon completion of the cleaning process, users are presented with multiple options for handling the simulation results.
+
+3.1 Result Export Functionality:
+- Allows saving of simulation results for further analysis.
+
+Implementation Details:
+- Developed a data serialization system for exporting simulation states and statistics.
+- Implemented file handling for saving data in a structured format.
+
+3.2 Flexible Path Selection:
+- Offers both default and custom path options for result storage.
+
+Implementation Details:
+- Integrated system-level path handling for cross-platform compatibility.
+- Implemented path validation to ensure data integrity and security.
+
+4. Custom Path Dialog System:
+
+A text input system was developed for custom path entry, mimicking advanced text editor functionality.
+
+Implementation Details:
+- Cursor Movement: Implemented both character-wise and word-wise cursor navigation.
+- Text Selection: Developed a system for selecting, copying, and pasting text.
+- Undo/Redo Functionality: Implemented a command pattern for tracking and reversing text changes.
+
+Technical Challenges:
+- Accurate handling of complex text operations within the SFML framework.
+- Ensuring cross-platform consistency in text rendering and input handling.
+- Optimizing performance for real-time text manipulation and rendering.
+
+5. Performance Optimization:
+
+Significant effort was invested in ensuring the simulation runs efficiently, even with complex house layouts and extended cleaning durations.
+
+Implementation Details:
+- Optimized rendering pipeline to maintain smooth animation during dynamic view changes.
+
+Technical Challenges:
+- Balancing between detailed simulation accuracy and performance.
+- Managing memory usage for long-running simulations with extensive state history.
+
+Conclusion:
+
+The implementation of these features enhanced the basic simulation into a comprehensive tool for analyzing and
+optimizing vacuum cleaner algorithms via visualization.
+The project provided experience in real-time graphics programming, user interface design, and complex state management in C++.
+Therefore, we believe this addition to the code deserves of a bonus.
