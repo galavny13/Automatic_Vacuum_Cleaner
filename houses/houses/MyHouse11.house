@@ -1,0 +1,16 @@
+MyHouse11
+MaxSteps=200
+MaxBattery=50
+Rows=11
+Cols=11
+WWWWWWWWWWW
+W1       1W
+W         W
+W         W
+W   999   W
+W   9D9   W
+W   999   W
+W         W
+W         W
+W1       1W
+WWWWWWWWWWW

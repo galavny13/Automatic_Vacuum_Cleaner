@@ -1,0 +1,12 @@
+MyHouse3
+MaxSteps=500
+MaxBattery=50
+Rows=7
+Cols=8
+WWWWWWWW
+WD1 W2 W
+W 2 W3 W
+WWW WW W
+W456W78W
+W789W90W
+WWWWWWWW

@@ -1,0 +1,8 @@
+MyHouse15
+MaxSteps = 1000
+MaxBattery=20
+Rows = 4
+Cols =10
+WWWW
+W D
+W 123456789
