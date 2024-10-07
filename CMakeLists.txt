@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(CPP_HW3)
+project(Automatic_Vacuum_Cleaner)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
@@ -69,7 +69,7 @@ function(create_algorithm_library name dir)
 endfunction()
 
 # Add executable
-add_executable(
+add_executable("myrobot"
         "main.cpp"
         "simulator/AlgorithmRegistrar.cpp"
         "simulation/simulator.cpp"
@@ -87,7 +87,6 @@ add_executable(
 set_target_properties("myrobot" PROPERTIES
         RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}"
 )
-
 
 # Add header files from algo directory and its subdirectories automatically
 file(GLOB_RECURSE ALGORITHM_HEADERS "algo/**/*.h")
