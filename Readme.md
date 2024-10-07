@@ -1,8 +1,8 @@
-# Assignment 3 - Automatic Vacuum Cleaner Simulation
+# Automatic Vacuum Cleaner Simulation
 
 ## Contributors
-- Gal Avny 209648815
-- Ben Cohen 323855288
+- Gal Avny
+- Ben Cohen
 
 ## Project Structure
 ```
