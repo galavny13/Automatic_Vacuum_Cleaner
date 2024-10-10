@@ -4,6 +4,38 @@
 - Gal Avny
 - Ben Cohen
 
+## Summary
+This project is an automatic vacuum cleaner simulation developed as part of a series of assignments for an advanced C++ programming course. The project evolved over three main assignments, where the complexity of both the algorithm and the simulation increased.
+
+### Assignment 1
+
+In the first assignment, we designed the foundational structure of the vacuum cleaner simulation. We created a simple vacuum cleaner that navigates through a house represented as a grid with dirt levels. The key features included:
+- Reading a house layout from an input file, including walls, corridors, dirt levels, and a single docking station.
+- Managing the vacuum cleaner's movement, battery life, and cleaning steps.
+- Ensuring the vacuum can find its way back to the docking station for recharging before the battery depletes.
+
+This initial implementation included basic movement, error handling, and the ability to output the number of steps and dirt left in the house at the end of the simulation. The algorithm was kept simple, focusing on ensuring that the vacuum does not move into walls or exceed the battery capacity.
+
+### Assignment 2
+
+Building upon the first assignment, assignment 2 introduced a more advanced algorithm and additional features:
+- A structured house file format, which included rows and columns for the house layout, dirt levels, walls, and the docking station.
+- The vacuum cleaner algorithm was upgraded to be "smart", utilizing search algorithms (e.g., BFS or DFS) to efficiently clean the house and return to the docking station with minimal steps.
+- API for sensors such as dirt sensors, wall sensors, and battery meters was introduced, allowing the algorithm to make decisions based on environmental feedback.
+- The output format was expanded to include the number of steps, dirt left, and the status of the vacuum (e.g., FINISHED, WORKING, DEAD).
+
+This phase emphasized the interaction between the algorithm and the sensors, pushing the vacuum to make more efficient decisions based on the house layout.
+
+### Assignment 3
+
+The final assignment (Assignment 3) is where the full project came together. We were tasked with creating a full simulation framework and two separate algorithms for cleaning various house layouts. The key requirements for this assignment were:
+- Creating two separate algorithms (submitted as shared object files, `.so`), each employing a different strategy for cleaning the house.
+- Implementing a simulator that could load multiple house files and run the algorithms on each house, generating detailed output files.
+- Adding multi-threading support to run multiple house-algorithm simulations simultaneously, with a timeout mechanism to ensure no simulation runs indefinitely.
+- A scoring system based on the number of steps taken, the dirt left in the house, and whether the vacuum finished in the docking station or not.
+
+The goal of the project was to create a robust, scalable solution that could handle multiple houses and algorithms while providing performance metrics for each run.
+
 ## Project Structure
 ```
 project root
@@ -27,6 +59,27 @@ project root
 │   └── concrete sensors, house, vacuum cleaner, utils, and simulator
 └── simulator (part of the skeleton)
 ```
+
+### Bonus Features
+
+As part of the project, we implemented several advanced features to enhance the simulation:
+
+#### 1. Dynamic Visualization System:
+- A real-time visualization system was developed using the SFML library to visualize the vacuum cleaner's movement in various house layouts. The system adapts to different house sizes, ensuring that the entire house remains visible during the simulation.
+
+#### 2. Interactive Control Suite:
+- Step-by-Step Navigation: Users can navigate through the simulation step by step, either forward or backward, allowing them to analyze each movement in detail.
+- Pause/Resume: The simulation can be paused and resumed at any point.
+- Variable Speed Control: Users can dynamically adjust the speed of the simulation based on their needs.
+
+#### 3. End-of-Simulation Options:
+- Result Export: After the simulation completes, users can export the results to a file for further analysis. 
+- Custom Path Dialog: A custom text input system was developed to allow users to specify the path for saving results.
+
+#### 4. Performance Optimization:
+- Significant effort was invested in optimizing the rendering pipeline to ensure smooth animation and efficient memory management, even during long simulations or with large house layouts.
+
+These features, while optional, greatly enhance the usability and performance of the simulation, offering both technical and user experience improvements.
 
 ## Algorithms
 
