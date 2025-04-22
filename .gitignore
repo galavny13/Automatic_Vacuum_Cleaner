@@ -7,7 +7,9 @@ myrobot
 *.exe
 
 # Shared libraries
-*.so
+# Specifically target .so files in nested algo subdirectories
+algo/*/*.so
+# Keep the general exclusions for other shared libraries
 *.dll
 *.dylib
 
