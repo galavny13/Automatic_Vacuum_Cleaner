@@ -1,0 +1,29 @@
+# Build directories
+cmake-build-debug/
+build/
+
+# Executables
+myrobot
+*.exe
+
+# Shared libraries
+*.so
+*.dll
+*.dylib
+
+# Object files
+*.o
+*.obj
+
+# IDE specific files
+.idea/
+.vscode/
+
+# Cache and temporary files
+CMakeFiles/
+*.swp
+*~
+
+# Generated files
+Makefile
+CMakeCache.txt
