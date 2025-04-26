@@ -883,7 +883,8 @@ bool MyAlgo::shouldSwitchMode(double x, double y) {
         return inExplorationMode;
     }
 
-    int totalHouseDirt = houseMap[currentPosition];
+    int dirt = houseMap[currentPosition];
+    int totalHouseDirt = dirt;
     int cellsWithDirt = houseMap[currentPosition] > 0 ? 1 : 0;
     int unexploredCount = 0;
 
@@ -903,20 +904,20 @@ bool MyAlgo::shouldSwitchMode(double x, double y) {
     // Calculate average dirt level (0 to 9) for cells with dirt
     double avgDirtLevel = cellsWithDirt > 0 ? static_cast<double>(totalHouseDirt) / cellsWithDirt : 0.0;
 
-    // Normalize unexplored count to a 0-9 scale
-    double normalizedUnexplored = std::min(9.0, unexploredCount * 2.25); // 4 unexplored cells would give a 9
+    // // Normalize unexplored count to a 0-9 scale
+    // double normalizedUnexplored = std::min(9.0, unexploredCount * 2.25); // 4 unexplored cells would give a 9
 
     // If in exploration mode
     if (inExplorationMode) {
         // Switch to cleaning if there's significant dirt and relatively few unexplored areas
-        if (avgDirtLevel > x && avgDirtLevel > normalizedUnexplored) {
+        if (dirt >= x) {
             return true;
         }
     }
         // If in cleaning mode
     else {
         // Switch to exploration if there's little dirt and relatively many unexplored areas
-        if (avgDirtLevel < y && normalizedUnexplored > avgDirtLevel) {
+        if (avgDirtLevel < y) {
             return true;
         }
     }
@@ -939,6 +940,16 @@ bool MyAlgo::shouldSwitchMode(double x, double y) {
  */
 void MyAlgo::planCleaningPath() {
     cleaningPath.clear(); // Clear any existing cleaning path
+
+    auto dirt = houseMap[currentPosition];
+    if (dirt >= 3) {
+        while (dirt >= 0) {
+            cleaningPath.push_back(Step::Stay);
+            dirt--;
+        }
+        return;
+    }
+
     auto currentPos = currentPosition; // Get the current position of the vacuum cleaner
     int remainingBattery = currentBatteryLevel; // Get the current battery level
     std::map<std::pair<int, int>, int> dirtChanges; // Map to track changes in dirt levels during simulation

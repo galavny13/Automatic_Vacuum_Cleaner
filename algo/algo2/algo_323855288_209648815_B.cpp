@@ -10,5 +10,5 @@ REGISTER_ALGORITHM(algo_323855288_209648815_B);
  * @return true if the vacuum should switch modes, false otherwise.
  */
 bool algo_323855288_209648815_B::shouldSwitchMode() {
-    return MyAlgo::shouldSwitchMode(3.5, 1.5);
+    return MyAlgo::shouldSwitchMode(3.0, 1.0);
 }

@@ -12,6 +12,8 @@ algo/*/*.so
 # Keep the general exclusions for other shared libraries
 *.dll
 *.dylib
+*.error
+*.csv
 
 # Object files
 *.o
