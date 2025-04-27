@@ -1,0 +1,170 @@
+@startuml Automatic_Vacuum_Cleaner_Overview
+
+' Global styling to improve readability
+skinparam {
+  DefaultFontSize 14
+  DefaultFontName Arial
+  BackgroundColor white
+  TitleFontSize 20
+  ClassFontSize 16
+  ClassAttributeFontSize 14
+  ClassStereotypeFontSize 12
+  padding 5
+  roundCorner 8
+  classFontStyle bold
+  ClassBackgroundColor #E8F1FF
+  ClassBorderColor #2C5BA9
+  ClassBorderThickness 2
+  ArrowColor #2C5BA9
+  ArrowThickness 1.5
+  shadowing false
+  linetype ortho
+}
+
+title "Automatic Vacuum Cleaner System - Main Components"
+
+' Use packages to organize components logically
+package "Interfaces" {
+  abstract "AbstractAlgorithm" as AA {
+    +{abstract} ~AbstractAlgorithm()
+    +{abstract} void setMaxSteps(size_t)
+    +{abstract} void setWallsSensor(const WallsSensor&)
+    +{abstract} void setDirtSensor(const DirtSensor&)
+    +{abstract} void setBatteryMeter(const BatteryMeter&)
+    +{abstract} Step nextStep()
+  }
+  
+  abstract "WallsSensor" as WS {
+    +{abstract} ~WallsSensor()
+    +{abstract} bool isWall(Direction d) const
+  }
+  
+  abstract "DirtSensor" as DS {
+    +{abstract} ~DirtSensor()
+    +{abstract} int dirtLevel() const
+  }
+  
+  abstract "BatteryMeter" as BM {
+    +{abstract} ~BatteryMeter()
+    +{abstract} size_t getBatteryState() const
+  }
+}
+
+package "Core Simulation" {
+  class "House" as H {
+    -vector<vector<int>> grid
+    -pair<int, int> dockingStation
+    -int totalDirtRemaining
+    +House()
+    +int getDirtLevel(int, int) const
+    +void clean(int, int)
+    +bool isWall(Direction, int, int) const
+    +int getTotalDirtRemaining() const
+    '...additional methods
+  }
+  
+  class "VacuumCleaner" as VC {
+    -shared_ptr<House> house
+    -int maxBatterySteps
+    -double currentBatteryLevel
+    -pair<int, int> position
+    -pair<int, int> dockingStation
+    +pair<int, int> getPosition() const
+    +void move(Step)
+    +double getCurrentBatteryLevel() const
+    '...additional methods
+  }
+}
+
+package "Algorithm Implementation" {
+  class "MyAlgo" as MA {
+    #map<pair<int, int>, int> houseMap
+    #vector<Step> cleaningPath
+    #bool inExplorationMode
+    '...additional attributes
+    +Step nextStep()
+    +void setMaxSteps(size_t)
+    +void setWallsSensor(const WallsSensor&)
+    +void setDirtSensor(const DirtSensor&)
+    +void setBatteryMeter(const BatteryMeter&)
+    #Step executeNextStep()
+  }
+  
+  class "algo_323855288_209648815_A" as A1 {
+    -Step exploreNextStep(const pair<int, int>&)
+    -bool shouldSwitchMode()
+    '...implementation details
+  }
+  
+  class "algo_323855288_209648815_B" as A2 {
+    -bool shouldSwitchMode()
+    '...implementation details
+  }
+}
+
+package "Sensors Implementation" {
+  class "ConcreteWallsSensor" as CWS {
+    -shared_ptr<const VacuumCleaner> vacuumCleaner
+    -shared_ptr<const House> house
+    +bool isWall(Direction d) const
+  }
+  
+  class "ConcreteDirtSensor" as CDS {
+    -shared_ptr<const VacuumCleaner> vacuumCleaner
+    -shared_ptr<const House> house
+    +int dirtLevel() const
+  }
+  
+  class "ConcreteBatteryMeter" as CBM {
+    -shared_ptr<const VacuumCleaner> vacuumCleaner
+    +size_t getBatteryState() const
+  }
+}
+
+package "Simulation Management" {
+  class "MySimulator" as MS {
+    -shared_ptr<House> house
+    -shared_ptr<VacuumCleaner> vacuumCleaner
+    -shared_ptr<AbstractAlgorithm> algorithm
+    '...additional attributes
+    +void run()
+    +int getScore() const
+  }
+  
+  class "SystemManager" as SM {
+    -shared_ptr<House> house
+    -shared_ptr<VacuumCleaner> vacuumCleaner
+    -shared_ptr<MyAlgo> myAlgo
+    '...additional attributes
+    +void runGUI()
+    +static bool isGUIAvailable()
+  }
+}
+
+' Key relationships between components
+AA <|-- MA
+MA <|-- A1
+MA <|-- A2
+
+WS <|-- CWS
+DS <|-- CDS
+BM <|-- CBM
+
+MS *--> H : manages >
+MS *--> VC : manages >
+MS *--> AA : runs >
+MS *--> SM : uses GUI >
+
+CWS --> VC : monitors >
+CWS --> H : scans >
+CDS --> VC : monitors >
+CDS --> H : scans >
+CBM --> VC : monitors >
+
+MA o--> WS : uses >
+MA o--> DS : uses >
+MA o--> BM : uses >
+
+VC o--> H : navigates >
+
+@enduml
