@@ -139,16 +139,35 @@ package "Simulation Management" {
     +void runGUI()
     +static bool isGUIAvailable()
   }
+  
+  class "Button" as BTN {
+    '...UI component
+  }
+}
+
+package "Algorithm Registration" {
+  class "AlgorithmRegistrar" as AR {
+    -class AlgorithmFactoryPair
+    -vector<AlgorithmFactoryPair> algorithms
+    -static AlgorithmRegistrar registrar
+    +static AlgorithmRegistrar& getAlgorithmRegistrar()
+    +void registerAlgorithm(const string&, AlgorithmFactory)
+    +size_t count() const
+  }
+  
+  class "AlgorithmRegistration" as AREG {
+    +AlgorithmRegistration(const string&, AlgorithmFactory)
+  }
 }
 
 ' Key relationships between components
-AA <|-- MA
-MA <|-- A1
-MA <|-- A2
+AA <|-- MA : implements >
+MA <|-- A1 : extends >
+MA <|-- A2 : extends >
 
-WS <|-- CWS
-DS <|-- CDS
-BM <|-- CBM
+WS <|-- CWS : implements >
+DS <|-- CDS : implements >
+BM <|-- CBM : implements >
 
 MS *--> H : manages >
 MS *--> VC : manages >
@@ -166,5 +185,10 @@ MA o--> DS : uses >
 MA o--> BM : uses >
 
 VC o--> H : navigates >
+
+SM --> "1..*" BTN : uses >
+
+AREG --> AR : registers >
+AR --> AA : creates >
 
 @enduml
